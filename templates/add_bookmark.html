@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List of links
+{% endblock %}
+
+{% block content %}
+    <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 m-auto">
+        <form method="post" action="{% url 'add_bookmark_post_request' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.url.id }}" class="col-form-label">{{ form.url.label_tag }}</label>
+                <div>
+                  {{ form.url }}
+                </div>
+            </div>
+            {{ form.errors }}
+            <button type="submit" class="btn btn-primary">Add bookmark</button>
+        </form>
+    </div>
+{% endblock %}

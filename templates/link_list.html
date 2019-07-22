@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List of links
+{% endblock %}
+
+{% block content %}
+    {% if links|length == 0 %}
+        <p class="text-center">
+        You don't have bookmarks
+        </p>
+    {% else %}
+        <ul class="list-group">
+        {% for link in links %}
+        <li class="list-group-item">
+            <div class="row">
+                <div>
+                    <img src="{{ link.favicon }}">
+                </div>
+                <div>
+                    <div>{{ link.title }}</div>
+                    <div>{{ link.url }}</div>
+                    <div>{{ link.description }}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
