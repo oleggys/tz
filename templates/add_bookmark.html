@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 m-auto">
-        <form method="post" action="{% url 'add_bookmark_post_request' %}">
+        <form method="post" action="{% url 'add_bookmarks' %}">
             {% csrf_token %}
             <div class="form-group">
                 <label for="{{ form.url.id }}" class="col-form-label">{{ form.url.label_tag }}</label>

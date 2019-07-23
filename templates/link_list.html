@@ -15,7 +15,9 @@
         <li class="list-group-item">
             <div class="row">
                 <div>
-                    <img src="{{ link.favicon }}">
+                    {% if link.favicon %}
+                    <img src="/media/favicons/{{ link.favicon }}" style="width: 40px">
+                    {% endif %}
                 </div>
                 <div>
                     <div>{{ link.title }}</div>

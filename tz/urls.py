@@ -6,5 +6,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('auth/', include("auth_sys.urls")),
     path('admin/', admin.site.urls),
-    path('', include("bookmarks_servis.urls")),
+    path('', include("bookmarks_service.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
