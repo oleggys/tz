@@ -30,7 +30,8 @@ def parse_page(url):
     title, description = '', ''
 
     found_block = head.find("title")
-    title = found_block.text
+    if found_block is None:
+        title = found_block.text
 
     found_block = head.find("meta", {"property": "og:title"})
     if found_block is None:
