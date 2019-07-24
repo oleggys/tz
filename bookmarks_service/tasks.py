@@ -15,7 +15,7 @@ def parse_page(url):
     response = requests.get(icon.url, stream=True)
     hashed_url = hashlib.md5(url.encode('utf-8'))
     icon_name = '{0}.{1}'.format(hashed_url.hexdigest(), icon.format)
-    image_path = 'media/favicons/' + icon_name
+    image_path = '/media/favicons/' + icon_name
     with open(image_path, 'wb') as image:
         for chunk in response.iter_content(1024):
             image.write(chunk)

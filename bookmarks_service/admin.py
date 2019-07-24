@@ -3,7 +3,7 @@ from bookmarks_service.models import Bookmark
 
 
 class BookmarkAdmin(admin.ModelAdmin):
-    fields = ['url']
+    fields = ['favicon', 'title', 'url', 'description']
 
 
 admin.site.register(Bookmark, BookmarkAdmin)
