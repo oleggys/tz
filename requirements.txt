@@ -6,7 +6,6 @@ django-celery==3.3.0
 django-kombu==0.9.4
 django-widget-tweaks==1.4.5
 favicon==0.5.1
-gunicorn==19.9.0
 Pillow==5.4.1
 requests==2.21.0
 gunicorn
