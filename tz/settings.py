@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a)t(j%ga(seyu3r*e8f5r7akxms^i0
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-ALLOWED_HOSTS = ['gusev-test.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['frozen-citadel-28896.herokuapp.com', '127.0.0.1']
 
 
 # Application definitio
