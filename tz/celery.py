@@ -1,6 +1,4 @@
 import os
-from celery import Celery
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tz.settings')
-celery_app = Celery('tz')
-celery_app.config_from_object('django.conf:settings')
-celery_app.autodiscover_tasks()
+import celery
+app_test = celery.Celery('tz')
+app_test.conf.update(BROKER_URL=os.environ['REDIS_URL'], CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
