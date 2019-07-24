@@ -7,18 +7,11 @@ from bs4 import BeautifulSoup
 from tz import app_test
 
 
-# @shared_task decorator used to define the function of the celery task
+# @app_test.task decorator used to define the function of the celery task
 @app_test.task
 def parse_page(url):
     # load and save favicon
     icon = favicon.get(url)[0]
-    response = requests.get(icon.url, stream=True)
-    hashed_url = hashlib.md5(url.encode('utf-8'))
-    icon_name = '{0}.{1}'.format(hashed_url.hexdigest(), icon.format)
-    image_path = 'media/favicons/' + icon_name
-    with open(image_path, 'wb') as image:
-        for chunk in response.iter_content(1024):
-            image.write(chunk)
 
     # load html from web page
     response = urlopen(url)
@@ -64,7 +57,7 @@ def parse_page(url):
 
     from bookmarks_service.models import Bookmark
     bookmark = Bookmark.objects.get(url=url)
-    bookmark.favicon = icon_name
+    bookmark.favicon = icon.url
     bookmark.title = title
     bookmark.description = description
     bookmark.save()
