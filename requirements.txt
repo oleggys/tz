@@ -11,4 +11,3 @@ requests==2.21.0
 gunicorn
 redis
 django-heroku
-tasks
