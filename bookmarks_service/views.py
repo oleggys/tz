@@ -1,4 +1,5 @@
 import hashlib
+from celery import shared_task
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 import favicon
@@ -9,11 +10,9 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from bookmarks_service.forms import AddBookmarkForm
 from bookmarks_service.models import Bookmark
-from tz import app_test
 
-
-# @app_test.task decorator used to define the function of the celery task
-@app_test.task
+# @shared_task decorator used to define the function of the celery task
+@shared_task
 def parse_page(url):
     # load and save favicon
     icon = favicon.get(url)[0]
@@ -107,7 +106,7 @@ def add_bookmark(request):
                 bookmark = Bookmark.objects.get(url=url)
                 bookmark.add_by_user.add(request.user)
                 bookmark.save()
-                tasks.parse_page.delay(url)
+                parse_page.delay(url)
         except AssertionError as e:
             form.add_error("url", "You added this link yet")
     else:
