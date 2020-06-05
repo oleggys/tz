@@ -1,7 +1,7 @@
 beautifulsoup4==4.8.0
 celery==4.3.0
 dj-database-url==0.5.0
-Django==2.2.3
+Django==2.2.13
 django-celery==3.3.0
 django-kombu==0.9.4
 django-widget-tweaks==1.4.5
